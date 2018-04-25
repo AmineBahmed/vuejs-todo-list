@@ -1,4 +1,4 @@
-Live demo [here]('https://aminebahmed.github.io/vuejs-todo-list')
+Live demo [here](https://aminebahmed.github.io/vuejs-todo-list)
 
 # todo-app
 
