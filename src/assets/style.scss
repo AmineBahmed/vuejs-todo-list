@@ -1,0 +1,157 @@
+$yellow: #F2C94C;
+$yellow: #FFD600;
+$green: #C0CA33;
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  background-color: lighten($yellow, 0%);
+  * {
+    font-family: 'Quicksand', sans-serif;
+    box-sizing: border-box;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  top: 80px;
+  padding: 15px;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  .input--create {
+    width: 100%;
+    height: 60px;
+    font-size: 20px;
+    padding: 0 20px;
+    border: 1px solid $yellow;
+    border-radius: 3px;
+    outline: none;
+    margin-bottom: 10px;
+  }
+}
+
+.container {
+  position: relative;
+  // background: $yellow;
+  // box-shadow: 0 50px 100px transparentize(black, 0.8);
+/*   width: 600px; */
+  padding: 10px;
+  padding-bottom: 5px;
+  border-radius: 3px;
+  margin-bottom: 100px;
+}
+
+.todoList {
+  margin: 0;
+  padding: 0;
+  li {
+    position: relative;
+    background-color: lighten($yellow, 12%);
+    list-style: none;
+    font-size: 0.98rem;
+/*     height: 60px; */
+    line-height: 20px;
+    margin-bottom: 8px;
+    padding: 20px 20px;
+    padding-right: 50px;
+    border-radius: 3px;
+    color: darken($yellow, 38%);
+    user-select: none;
+    &:hover .modify {
+      display: block;
+    }
+  }
+}
+
+.filter {
+  position: relative;
+  a {
+    font-size: 0.8125rem;
+    background: darken($yellow, 15%);
+    color: white;
+    padding: 8px 10px;
+    display: inline-block;
+    border-radius: 2px;
+    margin-bottom: 10px;
+  }
+  .right {
+    float: right;
+    @media only screen and (max-width: 480px) {
+      float: none;
+    }
+    span {
+      color: darken($yellow, 35%);
+      padding-left: 10px;
+    }
+  }
+}
+
+.modify {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  margin-top: -10px;
+  opacity: 0.5;
+  line-height: 20px;
+  display: none;
+  font-weight: bold;
+}
+
+.edit--input {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  top: 0;
+  width: 100%;
+  padding: 0 20px;
+  font-size: 16px;
+  border: none;
+  background: lighten($yellow, 13%);
+  border: 1px solid darken($green, 13%);
+  color: #725600;
+  border-radius: 3px;
+  outline: none;
+}
+
+.filter--input {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  padding: 0 20px;
+  border: 1px solid darken($yellow, 20%);
+  border-radius: 3px;
+  outline: none;
+}
+
+.completed--icon {
+  line-height: 20px;
+  vertical-align: top;
+  font-size: 20px;
+  padding-right: 5px;
+}
+
+.selected {
+  background: darken($yellow, 30%) !important;
+}
+
+.completed {
+  background-color: $green !important;
+  color: darken($green, 30%) !important;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .2s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
