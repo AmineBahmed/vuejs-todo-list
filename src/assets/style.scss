@@ -1,5 +1,5 @@
 $yellow: #F2C94C;
-$yellow: #FFD600;
+// $yellow: #FFD600;
 $green: #C0CA33;
 
 html, body {
@@ -7,7 +7,7 @@ html, body {
   margin: 0;
   padding: 0;
   font-size: 16px;
-  background-color: lighten($yellow, 0%);
+  // background-color: lighten($yellow, 0%);
   * {
     font-family: 'Quicksand', sans-serif;
     box-sizing: border-box;

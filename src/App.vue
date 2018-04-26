@@ -102,7 +102,7 @@ export default {
   methods: {
     addItem () {
       if( this.text.trim() != ""){
-        this.todos.push(
+        this.todos.unshift(
           {
             id: this.newId++,
             task: this.text,
