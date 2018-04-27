@@ -11,7 +11,7 @@
         <a href="#/" :class="{selected: show == 'search'}" @click="show = 'search'">Filter</a>
         <div class="right">
           <a href="#" @click="allCompleted">Check All</a>
-          <span>{{ filtredTodo.length | pluralize('Course') }}</span>
+          <span>{{ filtredTodo.length | pluralize('Task') }}</span>
         </div>
       </div> <!-- end filter buttons -->
       <transition name="fade" mode="out-in">
