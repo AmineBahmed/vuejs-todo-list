@@ -2,7 +2,7 @@
 	<li :class="{completed: todo.completed}" @dblclick.prevent="completeTask(todo)">
     <i class="material-icons completed--icon" v-if="todo.completed">done</i>
     {{ todo.task | capitalize}}
-    <div class="modify">
+    <div class="list--options">
       <i class="material-icons edit--icon" @click="editTodo(todo)">edit</i>
       <i class="material-icons remove--icon" @click="removeTask(todo.id)">close</i>
     </div>

@@ -110,7 +110,7 @@ export default {
 
 <style lang="scss">
 
-@import url('https://fonts.googleapis.com/css?family=Quicksand:500,700');
+@import url('https://fonts.googleapis.com/css?family=Quicksand:500');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css');
-@import './assets/style2.scss'
+@import './assets/style.scss'
 </style>
