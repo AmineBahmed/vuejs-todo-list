@@ -3,6 +3,7 @@
     <div class="background"></div>
     <input class="input--create" type="text" v-model="text" v-autofocus @keyup.enter="addItem" placeholder="Tap Here To Add A New Task...">
     <div class="container">
+      <!-- filter buttons -->
       <div class="filter" v-if="todos.length > 0">
         <a href="#/" :class="{selected: show == 'all'}" @click="show = 'all'">All</a>
         <a href="#/" :class="{selected: show == 'active'}" @click="show = 'active'">Active</a>
@@ -12,7 +13,7 @@
           <a href="#" @click="allCompleted">Check All</a>
           <span>{{ filtredTodo.length | pluralize('Course') }}</span>
         </div>
-      </div>
+      </div> <!-- end filter buttons -->
       <transition name="fade" mode="out-in">
         <ul class="todoList" :key="show">
           <input type="text" class="filter--input" v-model="search" v-if="show == 'search' && todos.length > 0" placeholder="Search A Task..." v-autofocus>
