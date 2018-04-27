@@ -1,17 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:500');
+
 $yellow: #F2C94C;
-// $yellow: #FFD600;
 $green: #8BC34A;
 
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-size: 16px;
-  // background-color: lighten($yellow, 0%);
+  font-size: 15px;
   * {
     font-family: 'Quicksand', sans-serif;
     box-sizing: border-box;
   }
+}
+
+.background {
+  position: fixed;
+  top:-50px;
+  left:-50px;
+  right:-50px;
+  bottom: -50px;
+  background-size: cover;
+  background-position: center;
+  background-color: #673AB7;
+  background-image: url("https://images.pexels.com/photos/1027393/pexels-photo-1027393.jpeg?auto=compress&cs=tinysrgb&h=650&w=940 1x, https://images.pexels.com/photos/1027393/pexels-photo-1027393.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 2x");
+  filter: blur(10px);
+  z-index: -1;
 }
 
 a {
@@ -19,8 +33,6 @@ a {
 }
 
 #app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   position: relative;
   top: 80px;
   padding: 15px;
@@ -28,23 +40,26 @@ a {
   max-width: 600px;
   margin: auto;
   .input--create {
+    color: white;
     width: 100%;
     height: 60px;
+    background: transparentize(white, 0.8);
     font-size: 20px;
     padding: 0 20px;
-    border: 1px solid $yellow;
+    border: none;
     border-radius: 3px;
     outline: none;
     margin-bottom: 10px;
+  }
+  input::placeholder {
+    color: white;
   }
 }
 
 .container {
   position: relative;
-  // background: $yellow;
-  // box-shadow: 0 50px 100px transparentize(black, 0.8);
 /*   width: 600px; */
-  padding: 10px;
+  padding: 15px;
   padding-bottom: 5px;
   border-radius: 3px;
   margin-bottom: 100px;
@@ -55,16 +70,14 @@ a {
   padding: 0;
   li {
     position: relative;
-    background-color: lighten($yellow, 12%);
+    background-color: transparentize(white, 0.8);
     list-style: none;
-    font-size: 0.98rem;
 /*     height: 60px; */
     line-height: 20px;
     margin-bottom: 8px;
     padding: 20px 20px;
-    padding-right: 50px;
     border-radius: 3px;
-    color: darken($yellow, 38%);
+    color: #fff;
     user-select: none;
     &:hover .modify {
       display: block;
@@ -75,10 +88,10 @@ a {
 .filter {
   position: relative;
   a {
-    font-size: 0.8125rem;
-    background: darken($yellow, 15%);
+    font-size: 13px;
+    background: transparentize(white, 0.6);
     color: white;
-    padding: 8px 10px;
+    padding: 6px 10px;
     display: inline-block;
     border-radius: 2px;
     margin-bottom: 10px;
@@ -89,21 +102,17 @@ a {
       float: none;
     }
     span {
-      color: darken($yellow, 35%);
+      color: white;
       padding-left: 10px;
     }
   }
 }
 
 .modify {
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  margin-top: -10px;
-  opacity: 0.5;
+  float: right;
+  // margin-top: -10px;
   line-height: 20px;
   display: none;
-  font-weight: bold;
 }
 
 .edit--input {
@@ -115,9 +124,8 @@ a {
   padding: 0 20px;
   font-size: 16px;
   border: none;
-  background: lighten($yellow, 13%);
+  background: white;
   border: 1px solid darken($green, 13%);
-  color: #725600;
   border-radius: 3px;
   outline: none;
 }
@@ -127,13 +135,15 @@ a {
   height: 50px;
   margin-bottom: 10px;
   font-size: 18px;
+  color: white;
   padding: 0 20px;
-  border: 1px solid darken($yellow, 20%);
+  background: transparentize(white, 0.8);
+  border: none;
   border-radius: 3px;
   outline: none;
 }
 
-.completed--icon {
+.completed--icon, .edit--icon, .remove--icon {
   line-height: 20px;
   vertical-align: top;
   font-size: 20px;
@@ -141,12 +151,15 @@ a {
 }
 
 .selected {
-  background: darken($yellow, 30%) !important;
+  background: transparentize(white, 0.8) !important;
 }
 
 .completed {
-  background-color: transparentize($green, 0.3) !important;
-  color: darken($green, 30%) !important;
+  background-color: transparentize($green, 0.2) !important;
+  color: white !important;
+  &.edit--input {
+    background-color: $green !important; 
+  }
 }
 
 .fade-enter-active, .fade-leave-active {
