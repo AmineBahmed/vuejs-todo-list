@@ -21,6 +21,9 @@
         </ul>
       </transition>
     </div>
+    <footer>
+      <p>Designed & Developed By Amine Bahmed</p>
+    </footer>
   </div>
 </template>
 
@@ -113,5 +116,11 @@ export default {
 
 @import url('https://fonts.googleapis.com/css?family=Quicksand:500');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css');
-@import './assets/style.scss'
+@import './assets/style.scss';
+
+footer p {
+  text-align: center;
+  color: white;
+  font-size: 13px;
+}
 </style>
