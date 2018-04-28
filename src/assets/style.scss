@@ -47,8 +47,13 @@ input {
   outline: none;
   margin-bottom: 10px;
 }
+
 input::placeholder {
   color: transparentize(white, 0.3);
+}
+
+input::-moz-placeholder {
+  color: white;
 }
 
 .container {
@@ -58,6 +63,7 @@ input::placeholder {
   padding-bottom: 5px;
   border-radius: 3px;
   margin-bottom: 100px;
+  user-select: none;
   @media only screen and (max-width: 480px) {
     padding-left: 0;
     padding-right: 0;
@@ -78,7 +84,6 @@ input::placeholder {
     padding-right: 50px;
     border-radius: 3px;
     color: white;
-    user-select: none;
     &:hover .list--options {
       display: block;
     }
@@ -103,6 +108,7 @@ input::placeholder {
     border-radius: 2px;
     margin-bottom: 10px;
     text-decoration: none;
+    outline: none;
   }
   .right {
     float: right;
