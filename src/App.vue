@@ -1,26 +1,7 @@
 <template>
   <div id="app">
-    <div class="background"></div>
-    <input class="input--create" type="text" v-model="text" v-autofocus @keyup.enter="addItem" placeholder="Tap Here To Add A New Task...">
-    <div class="container">
-      <!-- filter buttons -->
-      <div class="filter" v-if="todos.length > 0">
-        <a href="#/" :class="{selected: show == 'all'}" @click="show = 'all'">All</a>
-        <a href="#/" :class="{selected: show == 'active'}" @click="show = 'active'">Active</a>
-        <a href="#/" :class="{selected: show == 'done'}" @click="show = 'done'">Done</a>
-        <a href="#/" :class="{selected: show == 'search'}" @click="show = 'search'">Filter</a>
-        <div class="right">
-          <a href="#" @click="allCompleted">Check All</a>
-          <span>{{ filtredTodo.length | pluralize('Task') }}</span>
-        </div>
-      </div> <!-- end filter buttons -->
-      <transition name="fade" mode="out-in">
-        <ul class="todoList" :key="show">
-          <input type="text" class="filter--input" v-model="search" v-if="show == 'search' && todos.length > 0" placeholder="Search A Task..." v-autofocus>
-          <task :todoList="todos" :todo="item" v-for="item in filtredTodo" :key="item.id"></task>
-        </ul>
-      </transition>
-    </div>
+    <div class="background--image"></div>
+    <todo-list :todos="todos"></todo-list>
     <footer>
       <p>Designed & Developed By Amine Bahmed</p>
     </footer>
@@ -29,6 +10,7 @@
 
 <script>
 
+// store data in browser localStorage
 var STORAGE_KEY = "cabuya-todo-vuejs"
 var todoStorage = {
   getTodoList () {
@@ -42,20 +24,16 @@ var todoStorage = {
   }
 }
 
-import task from '@/components/task'
+import todoList from '@/components/todoList'
 
 export default {
   data () {
     return {
-      text: '',
       todos: todoStorage.getTodoList(),
-      newId: todoStorage.getTodoList().length,
-      show: 'all',
-      search: '',
     }
   },
   components: {
-    task
+    todoList
   },
   watch: {
     todos: {
@@ -64,60 +42,65 @@ export default {
       },
       deep: true
     }
-  },
-  computed: {
-    activeTasks () {
-      return this.todos.filter(todo => !todo.completed)
-    },
-    completedTasks () {
-      return this.todos.filter(todo => todo.completed)
-    },
-    
-    filtredTasks () {
-      return this.todos.filter(todo => {
-        return todo.task.toLowerCase().indexOf(this.search.toLowerCase()) > -1
-      })
-    },
-    filtredTodo () {
-      switch (this.show) {
-        case ('search'): return this.filtredTasks
-        case ('done'): return this.completedTasks
-        case ('active'): return this.activeTasks
-        default: return this.todos
-      }
-    },
-    AllTasksCompleted () {
-      return this.activeTasks.length === 0
-    }
-  },
-  methods: {
-    addItem () {
-      if( this.text.trim() != ""){
-        this.todos.unshift(
-          {
-            id: this.newId++,
-            task: this.text,
-            completed: false
-          }
-        )
-        this.text = ''
-      }
-    },
-    allCompleted () {
-      let AllTasksCompleted = this.AllTasksCompleted
-      this.todos.forEach(todo => todo.completed = !AllTasksCompleted)
-    }
   }
 }
 
 </script>
 
 <style lang="scss">
-
 @import url('https://fonts.googleapis.com/css?family=Quicksand:500');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css');
-@import './assets/style.scss';
-
+html, body {
+  height: 100%;
+  margin: 0;
+  * {
+    font-family: 'Quicksand', sans-serif;
+    box-sizing: border-box;
+  }
+}
+#app {
+  position: relative;
+  top: 80px;
+  padding: 15px;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  font-size: 16px;
+}
+.background--image {
+  position: fixed;
+  top:-50px;
+  left:-50px;
+  right:-50px;
+  bottom: -50px;
+  background-size: cover;
+  background-position: center;
+  background-color: #673AB7;
+  background-image: url("./assets/pexels-photo-1027393.jpeg");
+  filter: blur(10px);
+  z-index: -1;
+}
+input {
+  color: white;
+  width: 100%;
+  height: 60px;
+  background: transparentize(white, 0.8);
+  font-size: 20px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  margin-bottom: 10px;
+}
+input::placeholder {
+  color: transparentize(white, 0.3);
+}
+input::-moz-placeholder {
+  color: white;
+}
+input:-moz-placeholder {
+  color: white;
+}
 footer p {
   text-align: center;
   color: white;
